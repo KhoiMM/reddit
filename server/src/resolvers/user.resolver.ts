@@ -81,10 +81,12 @@ export class UserResolver {
 				email,
 			});
 
+			await UserEntity.save(newUser);
+
 			return {
 				code: 201,
 				success: true,
-				user: await UserEntity.save(newUser),
+				user: newUser,
 			} as UserResponse;
 		} catch (error) {
 			return {
